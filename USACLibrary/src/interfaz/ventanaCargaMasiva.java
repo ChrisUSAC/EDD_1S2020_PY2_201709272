@@ -113,6 +113,8 @@ public class ventanaCargaMasiva extends javax.swing.JFrame {
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         // TODO add your handling code here:
+        this.dispose();
+        new crearLibro().setVisible(true);
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void jbRegresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbRegresarActionPerformed
