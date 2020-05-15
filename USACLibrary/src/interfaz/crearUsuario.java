@@ -1,5 +1,7 @@
-
 package interfaz;
+
+import javax.swing.JOptionPane;
+import usaclibrary.USACLibrary;
 
 /**
  *
@@ -31,11 +33,11 @@ public class crearUsuario extends javax.swing.JFrame {
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
-        jTextField2 = new javax.swing.JTextField();
-        jTextField3 = new javax.swing.JTextField();
-        jTextField4 = new javax.swing.JTextField();
-        jTextField5 = new javax.swing.JTextField();
+        jtCarnet = new javax.swing.JTextField();
+        jtNombre = new javax.swing.JTextField();
+        jtApellido = new javax.swing.JTextField();
+        jtCarrera = new javax.swing.JTextField();
+        jtPass = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
@@ -75,21 +77,21 @@ public class crearUsuario extends javax.swing.JFrame {
         getContentPane().add(jLabel7);
         jLabel7.setBounds(40, 310, 61, 16);
 
-        jTextField1.addActionListener(new java.awt.event.ActionListener() {
+        jtCarnet.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField1ActionPerformed(evt);
+                jtCarnetActionPerformed(evt);
             }
         });
-        getContentPane().add(jTextField1);
-        jTextField1.setBounds(110, 80, 230, 28);
-        getContentPane().add(jTextField2);
-        jTextField2.setBounds(110, 130, 230, 28);
-        getContentPane().add(jTextField3);
-        jTextField3.setBounds(110, 180, 230, 28);
-        getContentPane().add(jTextField4);
-        jTextField4.setBounds(110, 240, 230, 28);
-        getContentPane().add(jTextField5);
-        jTextField5.setBounds(110, 300, 230, 28);
+        getContentPane().add(jtCarnet);
+        jtCarnet.setBounds(110, 80, 230, 28);
+        getContentPane().add(jtNombre);
+        jtNombre.setBounds(110, 130, 230, 28);
+        getContentPane().add(jtApellido);
+        jtApellido.setBounds(110, 180, 230, 28);
+        getContentPane().add(jtCarrera);
+        jtCarrera.setBounds(110, 240, 230, 28);
+        getContentPane().add(jtPass);
+        jtPass.setBounds(110, 300, 230, 28);
 
         jButton1.setText("Crear");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -116,9 +118,9 @@ public class crearUsuario extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
+    private void jtCarnetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtCarnetActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField1ActionPerformed
+    }//GEN-LAST:event_jtCarnetActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
@@ -127,7 +129,39 @@ public class crearUsuario extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
+        if (jtCarnet.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(null, "llenar Campo para continuar", "Alerta", JOptionPane.WARNING_MESSAGE);
+        } else if (jtNombre.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(null, "llenar Campo para continuar", "Alerta", JOptionPane.WARNING_MESSAGE);
+        } else if (jtApellido.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(null, "llenar Campo para continuar", "Alerta", JOptionPane.WARNING_MESSAGE);
+        } else if (jtCarrera.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(null, "llenar Campo para continuar", "Alerta", JOptionPane.WARNING_MESSAGE);
+        } else if (jtPass.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(null, "llenar Campo para continuar", "Alerta", JOptionPane.WARNING_MESSAGE);
+        } else {
+            //capturar los posibles valores a almacenar en variables
+            String Carnet = jtCarnet.getText();
+            String nombre = jtNombre.getText();
+            String apellido = jtApellido.getText();
+            String carrera = jtCarrera.getText();
+            String pass = jtPass.getText();
+            //validar que el carnet no exista ya en el sistema
+            if (!USACLibrary.hash.existeUsuario(Carnet)) { // si no existe el carnet registrado ingresar nuevo usuario
+              
+                USACLibrary.hash.funcionHash(Carnet, nombre, apellido, carrera, pass, pass);
+                JOptionPane.showMessageDialog(this, "Usuario Registrado Exitosamente", "AVISO", 1);
+                USACLibrary.hash.graficaConsola();
+            }
+            else{
+                JOptionPane.showMessageDialog(this, "Carnet Ya Registrado", "ERROR", 3);
+            }
+            
+            //enviar al metodo de busqueda de tabla hash
+           // Main.tablaUsuarios.modificar(Carnet, nombre, apellido, pass);
+            //JOptionPane.showMessageDialog(this, "Usuario Modificado Exitosamente", "AVISO", 1);
+
+        }
     }//GEN-LAST:event_jButton1ActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -140,10 +174,10 @@ public class crearUsuario extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
-    private javax.swing.JTextField jTextField4;
-    private javax.swing.JTextField jTextField5;
+    private javax.swing.JTextField jtApellido;
+    private javax.swing.JTextField jtCarnet;
+    private javax.swing.JTextField jtCarrera;
+    private javax.swing.JTextField jtNombre;
+    private javax.swing.JTextField jtPass;
     // End of variables declaration//GEN-END:variables
 }
