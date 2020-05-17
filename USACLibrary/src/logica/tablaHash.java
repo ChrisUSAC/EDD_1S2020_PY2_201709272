@@ -90,6 +90,29 @@ public class tablaHash {
 
     }
 //------------------------------------------------------------------------------------------------------------------------------------------------
+    //llena la informacion del frame para la modificacion de datos del usuario
+      public NodoLista busquedaModificar(String carnet) {
+
+        //calculo del indice en el que se modifica en la tabla 
+        int indiceArreglo = Integer.parseInt(carnet) % this.tamanio;
+
+        System.out.println("El indice es: " + indiceArreglo + " Para el carnet info: " + carnet);
+        System.out.println("----------------------------------------------------------");
+
+        //buscar en la lista si la posicion
+        NodoLista aux = this.arreglo.primero;
+        int contar = 0; //variable que sirve para posicionarse en el indice obtenido en indiceArreglo
+        while (contar != indiceArreglo) {
+
+            aux = aux.siguiente;
+            contar++;
+        }
+
+        //enviar a modificar en la lista simple del arreglo
+        return aux.usuarios.buscarUsuario(carnet);
+
+    }  
+//------------------------------------------------------------------------------------------------------------------------------------------------
 //metodo que sirve para validar si se puede guardar un usuario
     public boolean existeUsuario(String carnet) {
         boolean validar = false; // en caso de encontrar a ese usuario validar con true

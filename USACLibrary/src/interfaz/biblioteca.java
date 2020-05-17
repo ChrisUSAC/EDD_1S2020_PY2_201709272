@@ -4,20 +4,22 @@
  * and open the template in the editor.
  */
 package interfaz;
+import usaclibrary.USACLibrary;
+import logica.NodoLista;
 
 /**
  *
  * @author cris
  */
-public class Plataforma extends javax.swing.JFrame {
+public class biblioteca extends javax.swing.JFrame {
 
     /**
-     * Creates new form Plataforma
+     * Creates new form biblioteca
      */
-    public Plataforma() {
+    public biblioteca() {
         initComponents();
         this.setLocationRelativeTo(null); // centra el frame en la pantalla
-        this.setResizable(false);
+        this.setResizable(false);        
     }
 
     /**
@@ -37,55 +39,50 @@ public class Plataforma extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setMaximumSize(new java.awt.Dimension(555, 389));
-        setMinimumSize(new java.awt.Dimension(555, 389));
+        setMaximumSize(new java.awt.Dimension(620, 390));
+        setMinimumSize(new java.awt.Dimension(620, 390));
+        setPreferredSize(new java.awt.Dimension(620, 390));
         getContentPane().setLayout(null);
 
-        jLabel2.setFont(new java.awt.Font("sansserif", 1, 24)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel2.setText("USAC Library");
+        jLabel2.setFont(new java.awt.Font("sansserif", 1, 36)); // NOI18N
+        jLabel2.setText("Biblioteca");
         getContentPane().add(jLabel2);
-        jLabel2.setBounds(210, -20, 180, 100);
+        jLabel2.setBounds(210, 10, 180, 47);
 
-        jButton1.setText("Carga Masiva");
+        jButton1.setText("Editar Mi Usuario");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
             }
         });
         getContentPane().add(jButton1);
-        jButton1.setBounds(90, 100, 150, 28);
+        jButton1.setBounds(80, 70, 150, 28);
 
-        jButton2.setText("Biblioteca");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
-            }
-        });
+        jButton2.setText("Eliminar mi Usuario");
         getContentPane().add(jButton2);
-        jButton2.setBounds(330, 100, 110, 28);
+        jButton2.setBounds(80, 120, 150, 28);
 
-        jButton3.setText("Reportes");
+        jButton3.setText("Navegar Categorias");
         jButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton3ActionPerformed(evt);
             }
         });
         getContentPane().add(jButton3);
-        jButton3.setBounds(90, 170, 150, 28);
+        jButton3.setBounds(340, 70, 150, 28);
 
-        jButton4.setText("Salir");
+        jButton4.setText("Regresar");
         jButton4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton4ActionPerformed(evt);
             }
         });
         getContentPane().add(jButton4);
-        jButton4.setBounds(330, 170, 110, 28);
+        jButton4.setBounds(340, 110, 150, 28);
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/carga.jpg"))); // NOI18N
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/biblio.jpg"))); // NOI18N
         getContentPane().add(jLabel1);
-        jLabel1.setBounds(0, 0, 560, 390);
+        jLabel1.setBounds(0, 0, 630, 400);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -93,7 +90,21 @@ public class Plataforma extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
         this.dispose();
-        new ventanaCargaMasiva().setVisible(true);
+        
+        NodoLista aux = USACLibrary.hash.busquedaModificar(USACLibrary.UsuarioLogeado); // obtener informacion de usuario logueado
+        
+        String carnet="", nombre="",apellido="",carrera="",password="";
+        
+        carnet = aux.carnet;
+        nombre = aux.nombre;
+        apellido = aux.apellido;
+        carrera = aux.carrera;
+        password = aux.password;
+        
+        new modUsuario(carnet, nombre, apellido, carrera, password).setVisible(true); //ingresarla en los text file para su modificacion
+
+        
+        
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
@@ -101,16 +112,10 @@ public class Plataforma extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-
-        this.dispose(); // cerrar login
-        //abrir la ventana de login
-        new Login().setVisible(true);
-    }//GEN-LAST:event_jButton4ActionPerformed
-
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        
         this.dispose();
-        new biblioteca().setVisible(true);
-    }//GEN-LAST:event_jButton2ActionPerformed
+        new Plataforma().setVisible(true);
+    }//GEN-LAST:event_jButton4ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

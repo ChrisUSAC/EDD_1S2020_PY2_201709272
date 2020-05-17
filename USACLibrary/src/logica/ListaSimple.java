@@ -110,7 +110,26 @@ public class ListaSimple {
         }
 
     }
+    //--------------------------------------------------------------------------------------------------------------------------------------
+    //metodo que retorna la informacion del usuario
+        public NodoLista buscarUsuario(String carnet) {
 
+        NodoLista aux = this.primero; //referencia la primer nodo de la lista
+
+        while (aux != null) {
+
+            if (aux.carnet.equals(carnet)) {
+
+                return aux;
+                
+            }
+
+            aux = aux.siguiente;
+        }
+        
+        return aux; // si no encuentra la informacion del carnet lo envia null
+
+    }
     //--------------------------------------------------------------------------------------------------------------------------------------
     //metodo que nos dice si un usuario ya existe
     public boolean existeUsuario(String carnet) {
