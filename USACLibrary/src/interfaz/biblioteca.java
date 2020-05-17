@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 package interfaz;
+import javax.swing.JOptionPane;
 import usaclibrary.USACLibrary;
 import logica.NodoLista;
 
@@ -59,6 +60,11 @@ public class biblioteca extends javax.swing.JFrame {
         jButton1.setBounds(80, 70, 150, 28);
 
         jButton2.setText("Eliminar mi Usuario");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
         getContentPane().add(jButton2);
         jButton2.setBounds(80, 120, 150, 28);
 
@@ -116,6 +122,18 @@ public class biblioteca extends javax.swing.JFrame {
         this.dispose();
         new Plataforma().setVisible(true);
     }//GEN-LAST:event_jButton4ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+
+                // TODO add your handling code here:
+        this.dispose();
+        USACLibrary.hash.eliminar(USACLibrary.UsuarioLogeado);
+        System.out.println("ver usuarios del sistema:------------****************---------------------------------------------------");
+        USACLibrary.hash.graficaConsola();
+        JOptionPane.showMessageDialog(this, "Usuario Eliminado, Hasta luego", "AVISO", 1);
+        //resetear variables de logueo
+        new Login().setVisible(true);
+    }//GEN-LAST:event_jButton2ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
