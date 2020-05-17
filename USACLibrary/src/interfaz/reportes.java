@@ -9,12 +9,12 @@ package interfaz;
  *
  * @author cris
  */
-public class Plataforma extends javax.swing.JFrame {
+public class reportes extends javax.swing.JFrame {
 
     /**
-     * Creates new form Plataforma
+     * Creates new form reportes
      */
-    public Plataforma() {
+    public reportes() {
         initComponents();
         this.setLocationRelativeTo(null); // centra el frame en la pantalla
         this.setResizable(false);
@@ -34,85 +34,89 @@ public class Plataforma extends javax.swing.JFrame {
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
+        jButton5 = new javax.swing.JButton();
+        jButton6 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setMaximumSize(new java.awt.Dimension(555, 389));
-        setMinimumSize(new java.awt.Dimension(555, 389));
+        setMaximumSize(new java.awt.Dimension(635, 400));
+        setMinimumSize(new java.awt.Dimension(635, 400));
+        setPreferredSize(new java.awt.Dimension(635, 400));
         getContentPane().setLayout(null);
 
-        jLabel2.setFont(new java.awt.Font("sansserif", 1, 24)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel2.setText("USAC Library");
+        jLabel2.setFont(new java.awt.Font("sansserif", 1, 36)); // NOI18N
+        jLabel2.setText("Reportes");
         getContentPane().add(jLabel2);
-        jLabel2.setBounds(210, -20, 180, 100);
+        jLabel2.setBounds(220, 30, 220, 40);
 
-        jButton1.setText("Carga Masiva");
+        jButton1.setFont(new java.awt.Font("sansserif", 1, 12)); // NOI18N
+        jButton1.setText("Tabla Hash");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
             }
         });
         getContentPane().add(jButton1);
-        jButton1.setBounds(90, 100, 150, 28);
+        jButton1.setBounds(230, 90, 130, 28);
 
-        jButton2.setText("Biblioteca");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
-            }
-        });
+        jButton2.setFont(new java.awt.Font("sansserif", 1, 12)); // NOI18N
+        jButton2.setText("Arbol AVL");
         getContentPane().add(jButton2);
-        jButton2.setBounds(330, 100, 110, 28);
+        jButton2.setBounds(230, 130, 130, 28);
 
-        jButton3.setText("Reportes");
+        jButton3.setFont(new java.awt.Font("sansserif", 1, 12)); // NOI18N
+        jButton3.setText("Inorden AVL");
         jButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton3ActionPerformed(evt);
             }
         });
         getContentPane().add(jButton3);
-        jButton3.setBounds(90, 170, 150, 28);
+        jButton3.setBounds(230, 210, 130, 28);
 
-        jButton4.setText("Salir");
-        jButton4.addActionListener(new java.awt.event.ActionListener() {
+        jButton4.setFont(new java.awt.Font("sansserif", 1, 12)); // NOI18N
+        jButton4.setText("Preorden AVL");
+        getContentPane().add(jButton4);
+        jButton4.setBounds(230, 170, 130, 28);
+
+        jButton5.setFont(new java.awt.Font("sansserif", 1, 12)); // NOI18N
+        jButton5.setText("Postorden AVL");
+        getContentPane().add(jButton5);
+        jButton5.setBounds(230, 250, 130, 28);
+
+        jButton6.setFont(new java.awt.Font("sansserif", 1, 12)); // NOI18N
+        jButton6.setText("Regresar");
+        jButton6.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton4ActionPerformed(evt);
+                jButton6ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton4);
-        jButton4.setBounds(330, 170, 110, 28);
+        getContentPane().add(jButton6);
+        jButton6.setBounds(230, 290, 130, 28);
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/carga.jpg"))); // NOI18N
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/reporte.jpg"))); // NOI18N
         getContentPane().add(jLabel1);
-        jLabel1.setBounds(0, 0, 560, 390);
+        jLabel1.setBounds(0, 0, 640, 400);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
-        this.dispose();
-        new ventanaCargaMasiva().setVisible(true);
-    }//GEN-LAST:event_jButton1ActionPerformed
-
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
-        this.dispose();
-        new reportes().setVisible(true);
     }//GEN-LAST:event_jButton3ActionPerformed
 
-    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-
-        this.dispose(); // cerrar login
-        //abrir la ventana de login
-        new Login().setVisible(true);
-    }//GEN-LAST:event_jButton4ActionPerformed
-
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
+        // TODO add your handling code here:
         this.dispose();
-        new biblioteca().setVisible(true);
-    }//GEN-LAST:event_jButton2ActionPerformed
+        new Plataforma().setVisible(true);
+    }//GEN-LAST:event_jButton6ActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        usaclibrary.USACLibrary.hash.graficar();
+        System.out.println("graficando");
+    }//GEN-LAST:event_jButton1ActionPerformed
+
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -120,6 +124,8 @@ public class Plataforma extends javax.swing.JFrame {
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
+    private javax.swing.JButton jButton5;
+    private javax.swing.JButton jButton6;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     // End of variables declaration//GEN-END:variables
