@@ -7,7 +7,7 @@ package logica;
  */
 public class Node {
     String categoria, key;
-    int  height; //dato guardado (carnet) y altura
+    public int  height; // altura
     Node left,right; // punteros hacia los hijos iz y derecho
     
     //metodo constructor

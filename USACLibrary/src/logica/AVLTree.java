@@ -1,5 +1,9 @@
 package logica;
 
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.PrintWriter;
+
 /**
  *
  * @author cris
@@ -60,19 +64,19 @@ public class AVLTree {
     }
 
     //metodo para insertar un nodo y balancea el arbol ////////////////////////////////////////////////////////////////////////////////////
-    public Node insert(Node node, String key,String categoria) {
+    public Node insert(Node node, String key, String categoria) {
 
         //insercion normal como en el arbol binario
         if (node == null) {
-            return (new Node(key,categoria)); //reserva de memoria cuando se llega a un nodo hoja para insertarlo
+            return (new Node(key, categoria)); //reserva de memoria cuando se llega a un nodo hoja para insertarlo
         }
         //if (key < node.key) {
-        if ( key.compareToIgnoreCase(node.key) < 0) { //insertar izquierda
-            node.left = insert(node.left, key,categoria);
+        if (key.compareToIgnoreCase(node.key) < 0) { //insertar izquierda
+            node.left = insert(node.left, key, categoria);
             //System.out.println(node.key +" <- "+"nodo.left: "+node.left.key);
-        //} else if (key > node.key) {
+            //} else if (key > node.key) {
         } else if (key.compareToIgnoreCase(node.key) > 0) { // insertar derecha
-            node.right = insert(node.right, key,categoria);
+            node.right = insert(node.right, key, categoria);
             //System.out.println(node.key +" -> "+" nodo.right: "+node.right.key);
         } else // si esta repetido solo se retorna el nodo, mostrar mensaje de categoria ya existente
         {
@@ -240,27 +244,80 @@ public class AVLTree {
     //postOrden -------------------------------------------------------------------------------
     public void postOrden(Node node) {
         if (node != null) {
-            
+
             postOrden(node.left);
             postOrden(node.right);
             System.out.print(node.key + " ");
         }
     }
-    
+
     //-----------------------------------------------------------------------------------------
     //retorna el nodo que se envia a buscar
     public Node search(String categoria, Node r) {
         if (this.root == null) {
             return null;
-        //} else if (r.key == carnet) {    
+            //} else if (r.key == carnet) {    
         } else if (r.key.compareToIgnoreCase(categoria) == 0) {
             return r;
-        //} else if (r.key < carnet) {    
+            //} else if (r.key < carnet) {    
         } else if (r.key.compareToIgnoreCase(categoria) < 0) {
             return search(categoria, r.right);
         } else {
             return search(categoria, r.left);
         }
+    }
+
+    //------------------------------------------------------------------------------------------
+    public void graficar() throws IOException {
+        try {
+            FileWriter Aavl = new FileWriter("ArbolAVL.dot");
+            PrintWriter escritura = new PrintWriter(Aavl);
+            escritura.println("digraph G\r\n"
+                    + "{\r\n"
+                    + "        node [shape = record];");
+            escritura.println(dibujo(root));
+            escritura.println(enlaces(root));
+            escritura.println("}");
+            Aavl.close();
+        } catch (Exception rep) {
+            rep.printStackTrace();
+        }
+
+        ProcessBuilder pbuilder;
+        pbuilder = new ProcessBuilder("dot", "-Tpng", "-o", "ArbolAVL.png", "ArbolAVL.dot");
+        pbuilder.redirectErrorStream(true);
+        pbuilder.start();
+
+    }
+
+    String dibujo(Node n) {
+
+        String texto = "";
+        if (n != null) {
+            texto = "node" + n.key + " [ label =\"<f0> | <f1>" + n.key + "\n " +"Altura: "+ n.height + "\n " + "| <f2> \"];\r\n";
+            texto = texto + dibujo(n.left);
+            texto = texto + dibujo(n.right);
+        }
+
+        return texto;
+    }
+
+//-----------------------------------
+    String enlaces(Node n) {
+        String texto = "";
+        if (n != null) {
+            if (n.left != null) {
+                texto = "\"node" + n.key + "\":f0 -> \"node" + n.left.key + "\":f1;\r\n";
+            }
+
+            if (n.right != null) {
+                texto=texto+"\"node"+n.key+"\":f2 -> \"node"+n.right.key+"\":f1;\r\n";}
+            texto = texto + enlaces(n.left);
+            texto = texto + enlaces(n.right);
+        }
+
+        return texto;
+
     }
 
 }

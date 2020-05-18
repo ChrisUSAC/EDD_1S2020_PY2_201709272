@@ -1,0 +1,29 @@
+digraph G
+{
+        node [shape = record];
+node30 [ label ="<f0> | <f1>30
+ Altura: 3
+ | <f2> "];
+node20 [ label ="<f0> | <f1>20
+ Altura: 2
+ | <f2> "];
+node10 [ label ="<f0> | <f1>10
+ Altura: 1
+ | <f2> "];
+node25 [ label ="<f0> | <f1>25
+ Altura: 1
+ | <f2> "];
+node40 [ label ="<f0> | <f1>40
+ Altura: 2
+ | <f2> "];
+node50 [ label ="<f0> | <f1>50
+ Altura: 1
+ | <f2> "];
+
+"node30":f0 -> "node20":f1;
+"node30":f2 -> "node40":f1;
+"node20":f0 -> "node10":f1;
+"node20":f2 -> "node25":f1;
+"node40":f2 -> "node50":f1;
+
+}
