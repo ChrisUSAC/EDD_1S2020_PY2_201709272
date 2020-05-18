@@ -6,7 +6,7 @@ package logica;
  */
 public class AVLTree {
 
-    Node root; // raiz del arbol
+    public Node root; // raiz del arbol
 
     //funcion get de la altura del arbol --------------------------------------------------------------
     int height(Node N) {
@@ -60,16 +60,20 @@ public class AVLTree {
     }
 
     //metodo para insertar un nodo y balancea el arbol ////////////////////////////////////////////////////////////////////////////////////
-    Node insert(Node node, int key,String categoria) {
+    public Node insert(Node node, String key,String categoria) {
 
         //insercion normal como en el arbol binario
         if (node == null) {
             return (new Node(key,categoria)); //reserva de memoria cuando se llega a un nodo hoja para insertarlo
         }
-        if (key < node.key) {
+        //if (key < node.key) {
+        if ( key.compareToIgnoreCase(node.key) < 0) { //insertar izquierda
             node.left = insert(node.left, key,categoria);
-        } else if (key > node.key) {
+            //System.out.println(node.key +" <- "+"nodo.left: "+node.left.key);
+        //} else if (key > node.key) {
+        } else if (key.compareToIgnoreCase(node.key) > 0) { // insertar derecha
             node.right = insert(node.right, key,categoria);
+            //System.out.println(node.key +" -> "+" nodo.right: "+node.right.key);
         } else // si esta repetido solo se retorna el nodo, mostrar mensaje de categoria ya existente
         {
             return node;
@@ -84,23 +88,27 @@ public class AVLTree {
 
         //evaluar los 4 casos de balanceo
         //rotacion izq izq
-        if (balance > 1 && key < node.left.key) {
+        //if (balance > 1 && key < node.left.key) {
+        if (balance > 1 && key.compareToIgnoreCase(node.left.key) < 0) {
             return rightRotate(node);
         }
 
         // derecha derecha 
-        if (balance < -1 && key > node.right.key) {
+        //if (balance < -1 && key > node.right.key) {
+        if (balance < -1 && key.compareToIgnoreCase(node.right.key) > 0) {
             return leftRotate(node);
         }
 
         // izq derecha doble rotacion
-        if (balance > 1 && key > node.left.key) {
+        //if (balance > 1 && key > node.left.key) {
+        if (balance > 1 && key.compareToIgnoreCase(node.left.key) > 0) {
             node.left = leftRotate(node.left);
             return rightRotate(node);
         }
 
         // derecha izq doble rotacion
-        if (balance < -1 && key < node.right.key) {
+        //if (balance < -1 && key < node.right.key) {
+        if (balance < -1 && key.compareToIgnoreCase(node.right.key) < 0) {
             node.right = rightRotate(node.right);
             return leftRotate(node);
         }
@@ -122,7 +130,7 @@ public class AVLTree {
     }
 
     //metodo para eliminar una clave dada --------------------------------------------------------------------------------
-    Node deleteNode(Node root, int key) {
+    public Node deleteNode(Node root, String key) {
 
         //forma estandar
         //si el arbol esta vacio solo regresar la raiz nula
@@ -131,10 +139,12 @@ public class AVLTree {
         }
 
         //si la clave a eliminar es menor, enviar por subarbol izquierd llamada recursica
-        if (key < root.key) {
+        //if (key < root.key) {
+        if (key.compareToIgnoreCase(root.key) < 0) {
             root.left = deleteNode(root.left, key);
         } //si es mayor la clave llamar por subarbol derecho, llamada recursiva
-        else if (key > root.key) {
+        //else if (key > root.key) {
+        else if (key.compareToIgnoreCase(root.key) > 0) {
             root.right = deleteNode(root.right, key);
         } // evaluar si el nodo a eliminar es hoja, si solo tiene 1 hijo, o si tiene 2 hijos, de este punto en adelante si existe el nodo a eliminar
         else {
@@ -210,7 +220,7 @@ public class AVLTree {
     }
 
     //recorrido preorden ---------------------------------------------------------------------
-    void preOrder(Node node) {
+    public void preOrder(Node node) {
         if (node != null) {
             System.out.print(node.key + " ");
             preOrder(node.left);
@@ -219,35 +229,37 @@ public class AVLTree {
     }
 
     //recorrido inOrder -----------------------------------------------------------------------
-    void inOrder(Node node) {
+    public void inOrder(Node node) {
         if (node != null) {
-            preOrder(node.left);
+            inOrder(node.left);
             System.out.print(node.key + " ");
-            preOrder(node.right);
+            inOrder(node.right);
         }
     }
 
     //postOrden -------------------------------------------------------------------------------
-    void postOrden(Node node) {
+    public void postOrden(Node node) {
         if (node != null) {
             
-            preOrder(node.left);
-            preOrder(node.right);
+            postOrden(node.left);
+            postOrden(node.right);
             System.out.print(node.key + " ");
         }
     }
     
     //-----------------------------------------------------------------------------------------
     //retorna el nodo que se envia a buscar
-    public Node search(int carnet, Node r) {
+    public Node search(String categoria, Node r) {
         if (this.root == null) {
             return null;
-        } else if (r.key == carnet) {
+        //} else if (r.key == carnet) {    
+        } else if (r.key.compareToIgnoreCase(categoria) == 0) {
             return r;
-        } else if (r.key < carnet) {
-            return search(carnet, r.right);
+        //} else if (r.key < carnet) {    
+        } else if (r.key.compareToIgnoreCase(categoria) < 0) {
+            return search(categoria, r.right);
         } else {
-            return search(carnet, r.left);
+            return search(categoria, r.left);
         }
     }
 

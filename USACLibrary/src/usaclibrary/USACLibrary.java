@@ -24,6 +24,23 @@ public class USACLibrary {
     public static void main(String[] args) {
         // TODO code application logic here
         new Login().setVisible(true);
+        
+        
+         //AVLTree tree = new AVLTree();  
+  
+        /*
+        tree.root = tree.insert(tree.root, "10","cat");
+        tree.root = tree.insert(tree.root, "20","cat"); 
+        tree.root = tree.insert(tree.root, "30","cat");
+        tree.root = tree.insert(tree.root, "40","cat");
+        tree.root = tree.insert(tree.root, "50","cat");
+        tree.root = tree.insert(tree.root, "25","cat");
+        tree.root = tree.deleteNode(tree.root, "20");
+        tree.root = tree.deleteNode(tree.root, "30");
+        tree.root = tree.deleteNode(tree.root, "10");
+        System.out.println("imprimiendo");
+        tree.inOrder(tree.root); 
+        */
     }
 
 }

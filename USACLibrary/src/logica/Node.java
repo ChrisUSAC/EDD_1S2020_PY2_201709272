@@ -6,12 +6,12 @@ package logica;
  * @author cris
  */
 public class Node {
-    String categoria;
-    int key, height; //dato guardado (carnet) y altura
+    String categoria, key;
+    int  height; //dato guardado (carnet) y altura
     Node left,right; // punteros hacia los hijos iz y derecho
     
     //metodo constructor
-    Node(int d,String categoria)
+    Node(String d,String categoria)
     {
         this.key = d;  //valor a guardar
         this.categoria = categoria;
