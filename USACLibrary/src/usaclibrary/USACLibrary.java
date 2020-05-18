@@ -17,8 +17,8 @@ public class USACLibrary {
     public static tablaHash hash = new tablaHash(45);
     
     //variables que obtienen el nombre del usuario que se encuentra logeado.
-    public static String UsuarioLogeado = "201709272";
-    public String ClaveUsuarioLogeado = "";
+    public static String UsuarioLogeado = "";
+    public static String ClaveUsuarioLogeado = "";
     
     
     public static void main(String[] args) {

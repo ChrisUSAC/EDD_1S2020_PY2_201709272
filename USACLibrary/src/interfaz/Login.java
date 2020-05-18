@@ -6,6 +6,8 @@
 package interfaz;
 
 import javax.swing.JOptionPane;
+import logica.NodoLista;
+import usaclibrary.USACLibrary;
 
 /**
  *
@@ -91,6 +93,10 @@ public class Login extends javax.swing.JFrame {
         String txtusuario = jtUsuario.getText();
         String txtcontrasena = jtpass.getText();
 
+        //almacena en la variable global para hacer validaciones
+        usaclibrary.USACLibrary.UsuarioLogeado = txtusuario;
+        usaclibrary.USACLibrary.ClaveUsuarioLogeado = txtcontrasena;
+
         if (jtUsuario.getText().isEmpty()) {
             JOptionPane.showMessageDialog(null, "llenar Campo", "Alerta", JOptionPane.WARNING_MESSAGE);
         } else if (jtpass.getText().isEmpty()) {
@@ -105,6 +111,22 @@ public class Login extends javax.swing.JFrame {
                 this.dispose(); // cerrar login
                 //abrir la ventana de la libreria
                 new Plataforma().setVisible(true);
+
+            } //si no es el administrador buscar que el usuario exista en la hash
+            //validar que el carnet  exista ya en el sistema
+            else if (USACLibrary.hash.existeUsuario(txtusuario)) { // si  existe el carnet registrado ingresar plataforma
+
+                //validar que el usuario existente este bien la contrasena
+                NodoLista aux = USACLibrary.hash.busquedaModificar(USACLibrary.UsuarioLogeado); // obtener informacion de usuario logueado
+
+                if (aux.carnet.equals(USACLibrary.UsuarioLogeado) && aux.password.equals(USACLibrary.ClaveUsuarioLogeado)) {
+                    this.dispose(); // cerrar login
+                    //abrir la ventana de la libreria
+                    JOptionPane.showMessageDialog(null, "Bienvenido Carnet: "+USACLibrary.UsuarioLogeado);
+                    new Plataforma().setVisible(true);
+                } else {
+                    JOptionPane.showMessageDialog(null, "Contraseña Incorrecta", "Alerta", JOptionPane.WARNING_MESSAGE);
+                }
 
             } else {
                 JOptionPane.showMessageDialog(null, "Credenciales no registradas en el sistema", "Alerta", JOptionPane.WARNING_MESSAGE);

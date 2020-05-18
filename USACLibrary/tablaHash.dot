@@ -187,26 +187,12 @@ Carrera: Ingenieria en Sistemas
 Password: 123456
 ", width=1.5, group = 2];
 
-A1[label = "1
- Nombre: Juanito
-Apellido: Hernandez
-Carrera: Ingenieria Civil
-Password: 123456
-", width=1.5, group = 3];
-
 A201503477[label = "201503477
  Nombre: Juanito
 Apellido: Hernandez
 Carrera: Ingenieria Civil
 Password: 123456
 ", width=1.5, group = 2];
-
-A2[label = "2
- Nombre: Juanito
-Apellido: Hernandez
-Carrera: Ingenieria Civil
-Password: 123456
-", width=1.5, group = 3];
 
 A3[label = "3
  Nombre: Juanito
@@ -265,10 +251,10 @@ Password: 123456
 ", width=1.5, group = 2];
 
 A11[label = "11
- Nombre: Juanito
-Apellido: Hernandez
-Carrera: Ingenieria Civil
-Password: 123456
+ Nombre: c
+Apellido: c
+Carrera: c
+Password: c
 ", width=1.5, group = 2];
 
 A12[label = "12
@@ -277,6 +263,13 @@ Apellido: Hernandez
 Carrera: Ingenieria Civil
 Password: 123456
 ", width=1.5, group = 2];
+
+A201709272[label = "201709272
+ Nombre: Chris
+Apellido: Cobar
+Carrera: Sis
+Password: 1
+", width=1.5, group = 3];
 
 A13[label = "13
  Nombre: Juanito
@@ -460,9 +453,7 @@ Carrera: Ingenieria Civil
 Password: 123456
 ", width=1.5, group = 2];
 
-A201503476 -> A1
-
-A201503477 -> A2
+A12 -> A201709272
 
 A23 -> A202005878
 
@@ -541,8 +532,8 @@ A23 -> A202005878
 37 -> A37
 
 {rank =  same;0;}
-{rank =  same;1;A201503476;A1;}
-{rank =  same;2;A201503477;A2;}
+{rank =  same;1;A201503476;}
+{rank =  same;2;A201503477;}
 {rank =  same;3;A3;}
 {rank =  same;4;A4;}
 {rank =  same;5;A5;}
@@ -552,7 +543,7 @@ A23 -> A202005878
 {rank =  same;9;A9;}
 {rank =  same;10;A10;}
 {rank =  same;11;A11;}
-{rank =  same;12;A12;}
+{rank =  same;12;A12;A201709272;}
 {rank =  same;13;A13;}
 {rank =  same;14;A14;}
 {rank =  same;15;A15;}
