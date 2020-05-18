@@ -16,6 +16,7 @@ public class USACLibrary {
     
     //Estructuras del sistema
     public static tablaHash hash = new tablaHash(45);
+    public static AVLTree arbolAvl = new AVLTree(); 
     
     //variables que obtienen el nombre del usuario que se encuentra logeado.
     public static String UsuarioLogeado = "";
@@ -24,9 +25,9 @@ public class USACLibrary {
     
     public static void main(String[] args) throws IOException {
         // TODO code application logic here
-        //new Login().setVisible(true);
+        new Login().setVisible(true);
         
-        
+        /*
          AVLTree tree = new AVLTree();  
   
         
@@ -36,12 +37,14 @@ public class USACLibrary {
         tree.root = tree.insert(tree.root, "40","cat");
         tree.root = tree.insert(tree.root, "50","cat");
         tree.root = tree.insert(tree.root, "25","cat");
-        //tree.root = tree.deleteNode(tree.root, "20");
-        //tree.root = tree.deleteNode(tree.root, "30");
-        //tree.root = tree.deleteNode(tree.root, "10");
+        tree.root = tree.deleteNode(tree.root, "20");
+        tree.root = tree.deleteNode(tree.root, "30");
+        tree.root = tree.deleteNode(tree.root, "10");
         System.out.println("imprimiendo");
         tree.inOrder(tree.root); 
         tree.graficar();
+        
+        */
         
     }
 

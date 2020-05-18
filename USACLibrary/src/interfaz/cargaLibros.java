@@ -5,6 +5,18 @@
  */
 package interfaz;
 
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
+import javax.swing.JFileChooser;
+import javax.swing.JOptionPane;
+import javax.swing.filechooser.FileNameExtensionFilter;
+import org.json.simple.JSONArray;
+import org.json.simple.JSONObject;
+import org.json.simple.parser.JSONParser;
+import usaclibrary.USACLibrary;
+
 /**
  *
  * @author cris
@@ -14,6 +26,8 @@ public class cargaLibros extends javax.swing.JFrame {
     /**
      * Creates new form cargaLibros
      */
+    
+    public static String rutaFicheroo = ""; // almacena la ruta del fichero para la carga masiva
     public cargaLibros() {
         initComponents();
         this.setLocationRelativeTo(null); // centra el frame en la pantalla
@@ -31,7 +45,7 @@ public class cargaLibros extends javax.swing.JFrame {
 
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
+        jtCargarDatos = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTextArea1 = new javax.swing.JTextArea();
@@ -56,10 +70,15 @@ public class cargaLibros extends javax.swing.JFrame {
         jLabel3.setText("Buscar:");
         getContentPane().add(jLabel3);
         jLabel3.setBounds(50, 100, 90, 30);
-        getContentPane().add(jTextField1);
-        jTextField1.setBounds(130, 100, 440, 28);
+        getContentPane().add(jtCargarDatos);
+        jtCargarDatos.setBounds(130, 100, 440, 28);
 
         jButton1.setText("Buscar");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
         getContentPane().add(jButton1);
         jButton1.setBounds(577, 100, 90, 28);
 
@@ -98,7 +117,8 @@ public class cargaLibros extends javax.swing.JFrame {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
-        System.out.println("cargar libros");
+        System.out.println("rutaFichero: "+rutaFicheroo);
+        leerJson();
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
@@ -106,6 +126,47 @@ public class cargaLibros extends javax.swing.JFrame {
         this.dispose();
         new ventanaCargaMasiva().setVisible(true);
     }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        JFileChooser fc = new JFileChooser(); // creacion del objeto JFileChooser que permite buscar archivos .json
+
+        //creando el filtro para solo abrir archivos .json
+        FileNameExtensionFilter filtro = new FileNameExtensionFilter(".JSON", "json");
+
+        fc.setFileFilter(filtro); // se le agrega el filtro al JFileChooser
+
+        int seleccion = fc.showOpenDialog(this); // hasta que no se cierra la ventana no pase de aqui
+
+        if (seleccion == JFileChooser.APPROVE_OPTION) { //constante de identificacion del fichero
+
+            File fichero = fc.getSelectedFile();
+
+            // aqui en adelante se escribe la ruta del fichero en el jtxtField
+            this.jtCargarDatos.setText(fichero.getAbsolutePath()); // getAbsolutePath me optiene la ruta del fichero
+
+            rutaFicheroo = fichero.getAbsolutePath(); // se guarda en la varible global el string de ruta del fichero
+
+            //lectura del fichero
+            try (FileReader fr = new FileReader(fichero)) {
+
+                String cadena = "";
+                int valor = fr.read();
+
+                while (valor != -1) {
+
+                    cadena = cadena + (char) valor;
+                    valor = fr.read();
+                }
+
+                this.jTextArea1.setText(cadena);
+            } catch (IOException e) {
+
+                e.printStackTrace();
+            }
+
+        }
+    }//GEN-LAST:event_jButton1ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -117,6 +178,58 @@ public class cargaLibros extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextArea jTextArea1;
-    private javax.swing.JTextField jTextField1;
+    private javax.swing.JTextField jtCargarDatos;
     // End of variables declaration//GEN-END:variables
+
+public void leerJson()
+{    
+    //declara objeto de tipo json
+    JSONParser parser = new JSONParser();   
+    
+    try { 
+        
+        Object obj =parser.parse(new FileReader(rutaFicheroo));
+        JSONObject jsonObject = (JSONObject) obj;
+        
+        JSONArray usuarios = (JSONArray)    jsonObject.get("libros");
+        System.out.println("");
+        
+        
+        //recorrido
+        for (int i = 0; i < usuarios.size(); i++) {
+            
+            
+            //paso de los parametros a variables
+            JSONObject elemento = (JSONObject) usuarios.get(i);
+
+            String categoria = String.valueOf(elemento.get("Categoria"));
+            System.out.println("Categoria: " +categoria);            
+
+            System.out.println("----------------------------------------------------------");
+            
+            //guardar en el arbol
+            USACLibrary.arbolAvl.root = USACLibrary.arbolAvl.insert(USACLibrary.arbolAvl.root, categoria, USACLibrary.UsuarioLogeado);
+            
+        }
+        System.out.println("******************************************impresion Consola********************************************");
+        USACLibrary.arbolAvl.inOrder(USACLibrary.arbolAvl.root);
+        
+        JOptionPane.showMessageDialog(null, "Carga Exitosa", "Aviso", JOptionPane.INFORMATION_MESSAGE);
+        
+    }catch (FileNotFoundException e)
+    {
+        System.out.println("ocurrio un error de archivo");
+    }
+    catch (IOException e) 
+    {
+        System.out.println("ocurrio un error io");
+    }
+    catch (Exception e) 
+    {
+        System.out.println("ocurrio un error: "+e);
+        System.out.println(e);
+    }
+    
+}
+
 }

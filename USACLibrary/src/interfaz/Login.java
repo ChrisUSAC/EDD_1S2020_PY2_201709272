@@ -39,7 +39,6 @@ public class Login extends javax.swing.JFrame {
         jtUsuario = new javax.swing.JTextField();
         jtpass = new javax.swing.JPasswordField();
         jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -76,10 +75,6 @@ public class Login extends javax.swing.JFrame {
         });
         getContentPane().add(jButton1);
         jButton1.setBounds(200, 250, 130, 28);
-
-        jButton2.setText("Registrarse");
-        getContentPane().add(jButton2);
-        jButton2.setBounds(200, 290, 130, 28);
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/fondoAdmin.jpg"))); // NOI18N
         getContentPane().add(jLabel1);
@@ -140,7 +135,6 @@ public class Login extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

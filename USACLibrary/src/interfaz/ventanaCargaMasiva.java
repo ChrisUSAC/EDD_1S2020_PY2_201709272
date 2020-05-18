@@ -49,16 +49,16 @@ public class ventanaCargaMasiva extends javax.swing.JFrame {
             }
         });
         getContentPane().add(jButton1);
-        jButton1.setBounds(30, 60, 160, 28);
+        jButton1.setBounds(30, 60, 180, 28);
 
-        jButton2.setText("Carga Masiva Libro");
+        jButton2.setText("Carga Masiva Categorias");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton2ActionPerformed(evt);
             }
         });
         getContentPane().add(jButton2);
-        jButton2.setBounds(30, 120, 160, 28);
+        jButton2.setBounds(30, 120, 180, 28);
 
         jButton3.setText("Cargar Usuario");
         jButton3.addActionListener(new java.awt.event.ActionListener() {
@@ -74,7 +74,7 @@ public class ventanaCargaMasiva extends javax.swing.JFrame {
         getContentPane().add(jLabel2);
         jLabel2.setBounds(120, 10, 160, 30);
 
-        jButton4.setText("Cargar Libro");
+        jButton4.setText("Cargar Categoria");
         jButton4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton4ActionPerformed(evt);

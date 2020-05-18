@@ -5,6 +5,10 @@
  */
 package interfaz;
 
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 /**
  *
  * @author cris
@@ -61,6 +65,11 @@ public class reportes extends javax.swing.JFrame {
 
         jButton2.setFont(new java.awt.Font("sansserif", 1, 12)); // NOI18N
         jButton2.setText("Arbol AVL");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
         getContentPane().add(jButton2);
         jButton2.setBounds(230, 130, 130, 28);
 
@@ -117,6 +126,16 @@ public class reportes extends javax.swing.JFrame {
         System.out.println("graficando");
     }//GEN-LAST:event_jButton1ActionPerformed
 
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        try {
+            // TODO add your handling code here:
+            usaclibrary.USACLibrary.arbolAvl.graficar();
+        } catch (IOException ex) {
+            Logger.getLogger(reportes.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        System.out.println("graficando");
+
+    }//GEN-LAST:event_jButton2ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

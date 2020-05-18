@@ -1,5 +1,7 @@
 package logica;
 
+import java.awt.Desktop;
+import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -288,13 +290,22 @@ public class AVLTree {
         pbuilder.redirectErrorStream(true);
         pbuilder.start();
 
+        //abrir imagen            
+        File archivo = new File("ArbolAVL.png");
+        try {
+            Desktop.getDesktop().open(archivo);
+
+        } catch (Exception e) {
+            System.out.println("no se encontro imagen");
+        }
+
     }
 
     String dibujo(Node n) {
 
         String texto = "";
         if (n != null) {
-            texto = "node" + n.key + " [ label =\"<f0> | <f1>" + n.key + "\n " +"Altura: "+ n.height + "\n " + "| <f2> \"];\r\n";
+            texto = "node" + n.key + " [ label =\"<f0> | <f1>" + n.key + "\n " + "Altura: " + n.height + "\n " + "| <f2> \"];\r\n";
             texto = texto + dibujo(n.left);
             texto = texto + dibujo(n.right);
         }
@@ -311,7 +322,8 @@ public class AVLTree {
             }
 
             if (n.right != null) {
-                texto=texto+"\"node"+n.key+"\":f2 -> \"node"+n.right.key+"\":f1;\r\n";}
+                texto = texto + "\"node" + n.key + "\":f2 -> \"node" + n.right.key + "\":f1;\r\n";
+            }
             texto = texto + enlaces(n.left);
             texto = texto + enlaces(n.right);
         }

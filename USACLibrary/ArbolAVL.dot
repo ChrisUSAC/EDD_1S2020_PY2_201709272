@@ -1,29 +1,49 @@
 digraph G
 {
         node [shape = record];
-node30 [ label ="<f0> | <f1>30
+nodehola [ label ="<f0> | <f1>hola
+ Altura: 4
+ | <f2> "];
+nodeConsulta [ label ="<f0> | <f1>Consulta
  Altura: 3
  | <f2> "];
-node20 [ label ="<f0> | <f1>20
- Altura: 2
- | <f2> "];
-node10 [ label ="<f0> | <f1>10
+nodeBiografia [ label ="<f0> | <f1>Biografia
  Altura: 1
  | <f2> "];
-node25 [ label ="<f0> | <f1>25
- Altura: 1
- | <f2> "];
-node40 [ label ="<f0> | <f1>40
+nodeEnsayo [ label ="<f0> | <f1>Ensayo
  Altura: 2
  | <f2> "];
-node50 [ label ="<f0> | <f1>50
+nodeDrama [ label ="<f0> | <f1>Drama
+ Altura: 1
+ | <f2> "];
+nodeRevista [ label ="<f0> | <f1>Revista
+ Altura: 3
+ | <f2> "];
+nodeLiteratura [ label ="<f0> | <f1>Literatura
+ Altura: 2
+ | <f2> "];
+nodeInformativos [ label ="<f0> | <f1>Informativos
+ Altura: 1
+ | <f2> "];
+nodeLírico [ label ="<f0> | <f1>Lírico
+ Altura: 1
+ | <f2> "];
+nodeÉpico [ label ="<f0> | <f1>Épico
+ Altura: 2
+ | <f2> "];
+nodeSagas [ label ="<f0> | <f1>Sagas
  Altura: 1
  | <f2> "];
 
-"node30":f0 -> "node20":f1;
-"node30":f2 -> "node40":f1;
-"node20":f0 -> "node10":f1;
-"node20":f2 -> "node25":f1;
-"node40":f2 -> "node50":f1;
+"nodehola":f0 -> "nodeConsulta":f1;
+"nodehola":f2 -> "nodeRevista":f1;
+"nodeConsulta":f0 -> "nodeBiografia":f1;
+"nodeConsulta":f2 -> "nodeEnsayo":f1;
+"nodeEnsayo":f0 -> "nodeDrama":f1;
+"nodeRevista":f0 -> "nodeLiteratura":f1;
+"nodeRevista":f2 -> "nodeÉpico":f1;
+"nodeLiteratura":f0 -> "nodeInformativos":f1;
+"nodeLiteratura":f2 -> "nodeLírico":f1;
+"nodeÉpico":f0 -> "nodeSagas":f1;
 
 }

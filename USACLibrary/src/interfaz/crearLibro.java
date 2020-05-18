@@ -5,6 +5,9 @@
  */
 package interfaz;
 
+import javax.swing.JOptionPane;
+import usaclibrary.USACLibrary;
+
 /**
  *
  * @author cris
@@ -45,7 +48,7 @@ public class crearLibro extends javax.swing.JFrame {
         jTextField5 = new javax.swing.JTextField();
         jTextField6 = new javax.swing.JTextField();
         jTextField7 = new javax.swing.JTextField();
-        jTextField8 = new javax.swing.JTextField();
+        jtCategoria = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
@@ -101,24 +104,43 @@ public class crearLibro extends javax.swing.JFrame {
         jLabel10.setText("Categoria:");
         getContentPane().add(jLabel10);
         jLabel10.setBounds(20, 300, 70, 20);
+
+        jTextField1.setEditable(false);
         getContentPane().add(jTextField1);
         jTextField1.setBounds(100, 80, 260, 28);
+
+        jTextField2.setEditable(false);
         getContentPane().add(jTextField2);
         jTextField2.setBounds(100, 110, 260, 28);
+
+        jTextField3.setEditable(false);
         getContentPane().add(jTextField3);
         jTextField3.setBounds(100, 140, 260, 28);
+
+        jTextField4.setEditable(false);
         getContentPane().add(jTextField4);
         jTextField4.setBounds(100, 170, 260, 28);
+
+        jTextField5.setEditable(false);
         getContentPane().add(jTextField5);
         jTextField5.setBounds(100, 200, 260, 28);
+
+        jTextField6.setEditable(false);
         getContentPane().add(jTextField6);
         jTextField6.setBounds(100, 230, 260, 28);
+
+        jTextField7.setEditable(false);
         getContentPane().add(jTextField7);
         jTextField7.setBounds(100, 260, 260, 28);
-        getContentPane().add(jTextField8);
-        jTextField8.setBounds(100, 290, 260, 28);
+        getContentPane().add(jtCategoria);
+        jtCategoria.setBounds(100, 290, 260, 28);
 
         jButton1.setText("Crear");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
         getContentPane().add(jButton1);
         jButton1.setBounds(90, 350, 100, 28);
 
@@ -145,6 +167,21 @@ public class crearLibro extends javax.swing.JFrame {
         new ventanaCargaMasiva().setVisible(true);
     }//GEN-LAST:event_jButton2ActionPerformed
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+
+        if (jtCategoria.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(null, "llenar Campo para continuar", "Alerta", JOptionPane.WARNING_MESSAGE);
+        }  else {
+            //capturar los posibles valores a almacenar en variables
+            String categoria = jtCategoria.getText();
+            
+            //guardar en el arbol
+            USACLibrary.arbolAvl.root = USACLibrary.arbolAvl.insert(USACLibrary.arbolAvl.root, categoria, USACLibrary.UsuarioLogeado);
+            JOptionPane.showMessageDialog(this, "Usuario Registrado Exitosamente", "AVISO", 1);
+
+            }
+    }//GEN-LAST:event_jButton1ActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
@@ -165,6 +202,6 @@ public class crearLibro extends javax.swing.JFrame {
     private javax.swing.JTextField jTextField5;
     private javax.swing.JTextField jTextField6;
     private javax.swing.JTextField jTextField7;
-    private javax.swing.JTextField jTextField8;
+    private javax.swing.JTextField jtCategoria;
     // End of variables declaration//GEN-END:variables
 }
