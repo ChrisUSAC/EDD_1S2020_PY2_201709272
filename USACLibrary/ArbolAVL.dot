@@ -1,7 +1,7 @@
 digraph G
 {
         node [shape = record];
-nodehola [ label ="<f0> | <f1>hola
+nodeInformativos [ label ="<f0> | <f1>Informativos
  Altura: 4
  | <f2> "];
 nodeConsulta [ label ="<f0> | <f1>Consulta
@@ -16,34 +16,30 @@ nodeEnsayo [ label ="<f0> | <f1>Ensayo
 nodeDrama [ label ="<f0> | <f1>Drama
  Altura: 1
  | <f2> "];
-nodeRevista [ label ="<f0> | <f1>Revista
+nodeLírico [ label ="<f0> | <f1>Lírico
  Altura: 3
  | <f2> "];
 nodeLiteratura [ label ="<f0> | <f1>Literatura
- Altura: 2
- | <f2> "];
-nodeInformativos [ label ="<f0> | <f1>Informativos
  Altura: 1
  | <f2> "];
-nodeLírico [ label ="<f0> | <f1>Lírico
+nodeSagas [ label ="<f0> | <f1>Sagas
+ Altura: 2
+ | <f2> "];
+nodeRevista [ label ="<f0> | <f1>Revista
  Altura: 1
  | <f2> "];
 nodeÉpico [ label ="<f0> | <f1>Épico
- Altura: 2
- | <f2> "];
-nodeSagas [ label ="<f0> | <f1>Sagas
  Altura: 1
  | <f2> "];
 
-"nodehola":f0 -> "nodeConsulta":f1;
-"nodehola":f2 -> "nodeRevista":f1;
+"nodeInformativos":f0 -> "nodeConsulta":f1;
+"nodeInformativos":f2 -> "nodeLírico":f1;
 "nodeConsulta":f0 -> "nodeBiografia":f1;
 "nodeConsulta":f2 -> "nodeEnsayo":f1;
 "nodeEnsayo":f0 -> "nodeDrama":f1;
-"nodeRevista":f0 -> "nodeLiteratura":f1;
-"nodeRevista":f2 -> "nodeÉpico":f1;
-"nodeLiteratura":f0 -> "nodeInformativos":f1;
-"nodeLiteratura":f2 -> "nodeLírico":f1;
-"nodeÉpico":f0 -> "nodeSagas":f1;
+"nodeLírico":f0 -> "nodeLiteratura":f1;
+"nodeLírico":f2 -> "nodeSagas":f1;
+"nodeSagas":f0 -> "nodeRevista":f1;
+"nodeSagas":f2 -> "nodeÉpico":f1;
 
 }

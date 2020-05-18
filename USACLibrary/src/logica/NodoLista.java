@@ -50,5 +50,20 @@ public class NodoLista {
 
     }
     //------------------------------------------------------------------------------------------------------------------------------------------------
+    //cosntructor para categorias de los recorridos
+    public NodoLista(String categoria){
+    
+        this.siguiente = null;
+        this.anterior = null;
+        this.carnet = categoria;
+        this.nombre = null;
+        this.apellido = null;
+        this.carrera = null;
+        this.password = null;
+        this.passMD5 = null;
+
+        this.usuarios = new ListaSimple();
+    }
+    //------------------------------------------------------------------------------------------------------------------------------------------------
 
 }

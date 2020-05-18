@@ -1,5 +1,9 @@
 package logica;
 
+import java.awt.Desktop;
+import java.io.File;
+import java.io.PrintWriter;
+
 /**
  *
  * @author cris
@@ -147,5 +151,98 @@ public class ListaSimple {
         }
         return validar;
 
+    }
+    
+    //------------------------------------------------------------------------------------------------------------------------------------------
+    public void graficarRecorrido()
+    {
+        try {
+
+            PrintWriter w = new PrintWriter("RecorridoAVL.dot");  // creacion del archivo
+            w.println("digraph G{ \n");
+            w.println("node[ shape = box] \n");
+
+
+            //=================================================================
+            //asignacion de id horizontal a las listas simples
+                NodoLista aux = primero;
+                while (aux != null) {
+                    w.println("A" + aux.carnet + "[label = " + "\"" + aux.carnet +"\n"+"\"" + ", width=1.5];" + "\n");
+                    aux = aux.siguiente;
+
+                }
+            //enlaces de la lista simple///////////////////////////////////////////////////////////////////////
+
+                NodoLista aux2 = primero;
+
+                while (aux2 != null) {
+                    if (aux2.siguiente != null) {
+                        w.println("A" + aux2.carnet + " -> " + "A" + aux2.siguiente.carnet + "\n");
+                    }
+
+                    aux2 = aux2.siguiente;
+
+                }
+
+            //-------------------------------------
+
+            w.println("}");
+            w.close();  //cerrar la escritura del archivo
+
+            //construccion del archivo .dot .png
+            try {
+                ProcessBuilder pbuilder;
+                
+                pbuilder = new ProcessBuilder("dot", "-Tpng", "-o", "RecorridoAVL.png", "RecorridoAVL.dot");
+                pbuilder.redirectErrorStream(true);
+                //Ejecuta el proceso
+                pbuilder.start();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+
+            //abrir imagen            
+            File archivo = new File("RecorridoAVL.png");
+            try {
+                Desktop.getDesktop().open(archivo);
+
+            } catch (Exception e) {
+                System.out.println("no se encontro imagen");
+            }
+
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+    }
+    
+    //-------------------------------------------------------------------------------------------------
+    //metodo que resetea la lista
+    public void resetearLista()
+    {
+        this.primero = null;
+        this.ultimo = null;
+        this.tamano = 0;    
+    }
+    
+    //------------------------------------------------------------------------------------------------
+        //metodo para insertar al final de la lista
+    public void insertarFinalCategoria(String categoria) {
+
+        //creacion del nodo a insertar en la lista
+        NodoLista nuevo = new NodoLista(categoria);
+
+        //evaluar si la lista esta vacia
+        if (estaVacia()) {
+
+            this.primero = nuevo;
+            this.ultimo = nuevo;
+            this.tamano++;
+        } else {
+
+            this.ultimo.siguiente = nuevo;
+            nuevo.anterior = ultimo;
+            this.ultimo = nuevo;
+            this.tamano++;
+        }
     }
 }

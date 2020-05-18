@@ -1,0 +1,53 @@
+digraph G{ 
+
+node[ shape = box] 
+
+ABiografia[label = "Biografia
+", width=1.5];
+
+ADrama[label = "Drama
+", width=1.5];
+
+AEnsayo[label = "Ensayo
+", width=1.5];
+
+AConsulta[label = "Consulta
+", width=1.5];
+
+ALiteratura[label = "Literatura
+", width=1.5];
+
+ARevista[label = "Revista
+", width=1.5];
+
+AÉpico[label = "Épico
+", width=1.5];
+
+ASagas[label = "Sagas
+", width=1.5];
+
+ALírico[label = "Lírico
+", width=1.5];
+
+AInformativos[label = "Informativos
+", width=1.5];
+
+ABiografia -> ADrama
+
+ADrama -> AEnsayo
+
+AEnsayo -> AConsulta
+
+AConsulta -> ALiteratura
+
+ALiteratura -> ARevista
+
+ARevista -> AÉpico
+
+AÉpico -> ASagas
+
+ASagas -> ALírico
+
+ALírico -> AInformativos
+
+}

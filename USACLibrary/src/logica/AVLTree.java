@@ -252,6 +252,37 @@ public class AVLTree {
             System.out.print(node.key + " ");
         }
     }
+    
+        //recorrido preOrderReporte ---------------------------------------------------------------------
+    public void preOrderReporte(Node node) {
+        if (node != null) {
+            System.out.print(node.key + " ");
+            usaclibrary.USACLibrary.recorridosAVL.insertarFinalCategoria(node.key);
+            preOrderReporte(node.left);
+            preOrderReporte(node.right);
+        }
+    }
+
+    //recorrido inOrder -----------------------------------------------------------------------
+    public void inOrderReporte(Node node) {
+        if (node != null) {
+            inOrderReporte(node.left);
+            System.out.print(node.key + " ");
+            usaclibrary.USACLibrary.recorridosAVL.insertarFinalCategoria(node.key);
+            inOrderReporte(node.right);
+        }
+    }
+
+    //postOrden -------------------------------------------------------------------------------
+    public void postOrdenReporte(Node node) {
+        if (node != null) {
+
+            postOrdenReporte(node.left);
+            postOrdenReporte(node.right);
+            System.out.print(node.key + " ");
+            usaclibrary.USACLibrary.recorridosAVL.insertarFinalCategoria(node.key);
+        }
+    }
 
     //-----------------------------------------------------------------------------------------
     //retorna el nodo que se envia a buscar

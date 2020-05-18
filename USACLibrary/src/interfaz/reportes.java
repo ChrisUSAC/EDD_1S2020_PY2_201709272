@@ -85,11 +85,21 @@ public class reportes extends javax.swing.JFrame {
 
         jButton4.setFont(new java.awt.Font("sansserif", 1, 12)); // NOI18N
         jButton4.setText("Preorden AVL");
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
         getContentPane().add(jButton4);
         jButton4.setBounds(230, 170, 130, 28);
 
         jButton5.setFont(new java.awt.Font("sansserif", 1, 12)); // NOI18N
         jButton5.setText("Postorden AVL");
+        jButton5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton5ActionPerformed(evt);
+            }
+        });
         getContentPane().add(jButton5);
         jButton5.setBounds(230, 250, 130, 28);
 
@@ -112,6 +122,9 @@ public class reportes extends javax.swing.JFrame {
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
+        usaclibrary.USACLibrary.recorridosAVL.resetearLista(); // limpiar lista
+        usaclibrary.USACLibrary.arbolAvl.inOrderReporte(usaclibrary.USACLibrary.arbolAvl.root); // llenar lista para reporte
+        usaclibrary.USACLibrary.recorridosAVL.graficarRecorrido();// graficar reporte
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
@@ -136,6 +149,20 @@ public class reportes extends javax.swing.JFrame {
         System.out.println("graficando");
 
     }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+        // TODO add your handling code here:
+        usaclibrary.USACLibrary.recorridosAVL.resetearLista(); // limpiar lista
+        usaclibrary.USACLibrary.arbolAvl.preOrderReporte(usaclibrary.USACLibrary.arbolAvl.root); // llenar lista para reporte
+        usaclibrary.USACLibrary.recorridosAVL.graficarRecorrido();// graficar reporte
+    }//GEN-LAST:event_jButton4ActionPerformed
+
+    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+        // TODO add your handling code here:
+        usaclibrary.USACLibrary.recorridosAVL.resetearLista(); // limpiar lista
+        usaclibrary.USACLibrary.arbolAvl.postOrdenReporte(usaclibrary.USACLibrary.arbolAvl.root); // llenar lista para reporte
+        usaclibrary.USACLibrary.recorridosAVL.graficarRecorrido();// graficar reporte
+    }//GEN-LAST:event_jButton5ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
