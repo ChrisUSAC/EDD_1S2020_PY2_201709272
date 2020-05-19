@@ -149,7 +149,7 @@ public class crearUsuario extends javax.swing.JFrame {
             //validar que el carnet no exista ya en el sistema
             if (!USACLibrary.hash.existeUsuario(Carnet)) { // si no existe el carnet registrado ingresar nuevo usuario
               
-                USACLibrary.hash.funcionHash(Carnet, nombre, apellido, carrera, pass, pass);
+                USACLibrary.hash.funcionHash(Carnet, nombre, apellido, carrera, pass, USACLibrary.hash.getMd5(pass));
                 JOptionPane.showMessageDialog(this, "Usuario Registrado Exitosamente", "AVISO", 1);
                 USACLibrary.hash.graficaConsola();
             }

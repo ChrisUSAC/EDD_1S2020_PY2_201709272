@@ -257,7 +257,7 @@ public class AVLTree {
     public void preOrderReporte(Node node) {
         if (node != null) {
             System.out.print(node.key + " ");
-            usaclibrary.USACLibrary.recorridosAVL.insertarFinalCategoria(node.key);
+            usaclibrary.USACLibrary.recorridosAVL.insertarFinalCategoria(node.key,node.categoria);
             preOrderReporte(node.left);
             preOrderReporte(node.right);
         }
@@ -268,7 +268,7 @@ public class AVLTree {
         if (node != null) {
             inOrderReporte(node.left);
             System.out.print(node.key + " ");
-            usaclibrary.USACLibrary.recorridosAVL.insertarFinalCategoria(node.key);
+            usaclibrary.USACLibrary.recorridosAVL.insertarFinalCategoria(node.key,node.categoria);
             inOrderReporte(node.right);
         }
     }
@@ -280,7 +280,7 @@ public class AVLTree {
             postOrdenReporte(node.left);
             postOrdenReporte(node.right);
             System.out.print(node.key + " ");
-            usaclibrary.USACLibrary.recorridosAVL.insertarFinalCategoria(node.key);
+            usaclibrary.USACLibrary.recorridosAVL.insertarFinalCategoria(node.key,node.categoria);
         }
     }
 

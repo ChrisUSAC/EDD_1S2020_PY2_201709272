@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 package interfaz;
+
 import javax.swing.JOptionPane;
 import usaclibrary.USACLibrary;
 import logica.NodoLista;
@@ -20,7 +21,7 @@ public class biblioteca extends javax.swing.JFrame {
     public biblioteca() {
         initComponents();
         this.setLocationRelativeTo(null); // centra el frame en la pantalla
-        this.setResizable(false);        
+        this.setResizable(false);
     }
 
     /**
@@ -37,6 +38,7 @@ public class biblioteca extends javax.swing.JFrame {
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
+        jButton5 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -86,6 +88,15 @@ public class biblioteca extends javax.swing.JFrame {
         getContentPane().add(jButton4);
         jButton4.setBounds(340, 110, 150, 28);
 
+        jButton5.setText("Tabla Usuarios");
+        jButton5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton5ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jButton5);
+        jButton5.setBounds(80, 170, 150, 28);
+
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/biblio.jpg"))); // NOI18N
         getContentPane().add(jLabel1);
         jLabel1.setBounds(0, 0, 630, 400);
@@ -96,36 +107,37 @@ public class biblioteca extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
         this.dispose();
-        
+
         NodoLista aux = USACLibrary.hash.busquedaModificar(USACLibrary.UsuarioLogeado); // obtener informacion de usuario logueado
-        
-        String carnet="", nombre="",apellido="",carrera="",password="";
-        
+
+        String carnet = "", nombre = "", apellido = "", carrera = "", password = "";
+
         carnet = aux.carnet;
         nombre = aux.nombre;
         apellido = aux.apellido;
         carrera = aux.carrera;
         password = aux.password;
-        
+
         new modUsuario(carnet, nombre, apellido, carrera, password).setVisible(true); //ingresarla en los text file para su modificacion
 
-        
-        
+
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
+        this.dispose();
+        new tablaCategorias().setVisible(true);
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-        
+
         this.dispose();
         new Plataforma().setVisible(true);
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
 
-                // TODO add your handling code here:
+        // TODO add your handling code here:
         this.dispose();
         USACLibrary.hash.eliminar(USACLibrary.UsuarioLogeado);
         System.out.println("ver usuarios del sistema:------------****************---------------------------------------------------");
@@ -135,12 +147,19 @@ public class biblioteca extends javax.swing.JFrame {
         new Login().setVisible(true);
     }//GEN-LAST:event_jButton2ActionPerformed
 
+    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+        // TODO add your handling code here:
+        this.dispose();
+        new tablaUsuario().setVisible(true);
+    }//GEN-LAST:event_jButton5ActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
+    private javax.swing.JButton jButton5;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     // End of variables declaration//GEN-END:variables

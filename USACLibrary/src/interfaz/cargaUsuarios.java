@@ -238,7 +238,7 @@ public void leerJson()
             //validar que el carnet no exista ya en el sistema
             if (!USACLibrary.hash.existeUsuario(Carnet)) { // si no existe el carnet registrado ingresar nuevo usuario
               
-                USACLibrary.hash.funcionHash(Carnet, Nombre, Apellido, Carrera, Password, Password);
+                USACLibrary.hash.funcionHash(Carnet, Nombre, Apellido, Carrera, Password, USACLibrary.hash.getMd5(Password));
                 //JOptionPane.showMessageDialog(this, "Usuario Registrado Exitosamente: "+Carnet, "AVISO", 1);
             }
             else{

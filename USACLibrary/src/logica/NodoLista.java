@@ -51,12 +51,12 @@ public class NodoLista {
     }
     //------------------------------------------------------------------------------------------------------------------------------------------------
     //cosntructor para categorias de los recorridos
-    public NodoLista(String categoria){
+    public NodoLista(String categoria,String creador){
     
         this.siguiente = null;
         this.anterior = null;
         this.carnet = categoria;
-        this.nombre = null;
+        this.nombre = creador;
         this.apellido = null;
         this.carrera = null;
         this.password = null;

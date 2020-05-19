@@ -145,7 +145,7 @@ public class modUsuario extends javax.swing.JFrame {
        
             //modificar los datos
 
-            USACLibrary.hash.modificar(Carnet, nombre, apellido, carrera, pass, pass);
+            USACLibrary.hash.modificar(Carnet, nombre, apellido, carrera, pass, USACLibrary.hash.getMd5(pass));
             JOptionPane.showMessageDialog(this, "Usuario Modificado Exitosamente", "AVISO", 1);
                         
         }

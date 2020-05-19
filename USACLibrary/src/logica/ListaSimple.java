@@ -226,10 +226,32 @@ public class ListaSimple {
     
     //------------------------------------------------------------------------------------------------
         //metodo para insertar al final de la lista
-    public void insertarFinalCategoria(String categoria) {
+    public void insertarFinalCategoria(String categoria,String creador) {
 
         //creacion del nodo a insertar en la lista
-        NodoLista nuevo = new NodoLista(categoria);
+        NodoLista nuevo = new NodoLista(categoria,creador);
+
+        //evaluar si la lista esta vacia
+        if (estaVacia()) {
+
+            this.primero = nuevo;
+            this.ultimo = nuevo;
+            this.tamano++;
+        } else {
+
+            this.ultimo.siguiente = nuevo;
+            nuevo.anterior = ultimo;
+            this.ultimo = nuevo;
+            this.tamano++;
+        }
+    }
+    
+    //---------------------------------------------------------------------------------------------
+    //metodo para insertar al final los usuarios en una lista que esten en el sistema
+    public void insertarFinalUsuarioSistema(String carnet, String nombre, String apellido, String carrera, String password, String passMD5) {
+
+        //creacion del nodo a insertar en la lista
+        NodoLista nuevo = new NodoLista(carnet, nombre, apellido, carrera, password, passMD5);
 
         //evaluar si la lista esta vacia
         if (estaVacia()) {

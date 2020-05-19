@@ -18,7 +18,7 @@ public class USACLibrary {
     public static tablaHash hash = new tablaHash(45);
     public static AVLTree arbolAvl = new AVLTree(); 
     public static ListaSimple recorridosAVL = new ListaSimple(); // lista para recoridos del avl
-    
+    public static ListaSimple usuariosSistema = new ListaSimple(); // lista para recoridos del avl
     //variables que obtienen el nombre del usuario que se encuentra logeado.
     public static String UsuarioLogeado = "";
     public static String ClaveUsuarioLogeado = "";

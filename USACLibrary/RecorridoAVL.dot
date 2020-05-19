@@ -5,49 +5,49 @@ node[ shape = box]
 ABiografia[label = "Biografia
 ", width=1.5];
 
-ADrama[label = "Drama
-", width=1.5];
-
-AEnsayo[label = "Ensayo
-", width=1.5];
-
 AConsulta[label = "Consulta
 ", width=1.5];
 
-ALiteratura[label = "Literatura
+ADrama[label = "Drama
 ", width=1.5];
 
-ARevista[label = "Revista
-", width=1.5];
-
-AÉpico[label = "Épico
-", width=1.5];
-
-ASagas[label = "Sagas
-", width=1.5];
-
-ALírico[label = "Lírico
+Ae[label = "e
 ", width=1.5];
 
 AInformativos[label = "Informativos
 ", width=1.5];
 
-ABiografia -> ADrama
+ALiteratura[label = "Literatura
+", width=1.5];
 
-ADrama -> AEnsayo
+ALírico[label = "Lírico
+", width=1.5];
 
-AEnsayo -> AConsulta
+ARevista[label = "Revista
+", width=1.5];
 
-AConsulta -> ALiteratura
+ASagas[label = "Sagas
+", width=1.5];
 
-ALiteratura -> ARevista
+AÉpico[label = "Épico
+", width=1.5];
 
-ARevista -> AÉpico
+ABiografia -> AConsulta
 
-AÉpico -> ASagas
+AConsulta -> ADrama
 
-ASagas -> ALírico
+ADrama -> Ae
 
-ALírico -> AInformativos
+Ae -> AInformativos
+
+AInformativos -> ALiteratura
+
+ALiteratura -> ALírico
+
+ALírico -> ARevista
+
+ARevista -> ASagas
+
+ASagas -> AÉpico
 
 }

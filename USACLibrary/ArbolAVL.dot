@@ -10,10 +10,10 @@ nodeConsulta [ label ="<f0> | <f1>Consulta
 nodeBiografia [ label ="<f0> | <f1>Biografia
  Altura: 1
  | <f2> "];
-nodeEnsayo [ label ="<f0> | <f1>Ensayo
+nodeDrama [ label ="<f0> | <f1>Drama
  Altura: 2
  | <f2> "];
-nodeDrama [ label ="<f0> | <f1>Drama
+nodee [ label ="<f0> | <f1>e
  Altura: 1
  | <f2> "];
 nodeLírico [ label ="<f0> | <f1>Lírico
@@ -35,8 +35,8 @@ nodeÉpico [ label ="<f0> | <f1>Épico
 "nodeInformativos":f0 -> "nodeConsulta":f1;
 "nodeInformativos":f2 -> "nodeLírico":f1;
 "nodeConsulta":f0 -> "nodeBiografia":f1;
-"nodeConsulta":f2 -> "nodeEnsayo":f1;
-"nodeEnsayo":f0 -> "nodeDrama":f1;
+"nodeConsulta":f2 -> "nodeDrama":f1;
+"nodeDrama":f2 -> "nodee":f1;
 "nodeLírico":f0 -> "nodeLiteratura":f1;
 "nodeLírico":f2 -> "nodeSagas":f1;
 "nodeSagas":f0 -> "nodeRevista":f1;
